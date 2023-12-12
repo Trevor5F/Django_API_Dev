@@ -15,9 +15,6 @@ from ads.permissions import AdUpdateDeletePermission
 from ads.serializers.ad import AdSerializer, AdDestroySerializer, AdDetailSerializer
 
 
-# Если вы хотите указать другой набор данных или применить какие-либо фильтры, вы можете явно указать `queryset`.
-# Например, `queryset = Ad.objects.filter(is_published=True)` ограничит вывод только активных вакансий.
-
 class AdListView(ListAPIView):
     queryset = Ad.objects.all()
     serializer_class = AdSerializer
@@ -63,7 +60,7 @@ class AdCreateView(CreateView):
 
         new_ad = Ad.objects.create(
             name=ad_data['name'],
-            author=get_object_or_404(User, pk=ad_data["author_id"]),  # переопределяем поле на author_id
+            author=get_object_or_404(User, pk=ad_data["author_id"]),
             price=ad_data['price'],
             description=ad_data['description'],
             is_published=ad_data['is_published'],
@@ -101,7 +98,7 @@ class AdUploadImageView(UpdateAPIView):
 
     def put(self, request, *args, **kwargs):
         ad = self.get_object()
-        serializer = self.serializer_class(ad, data=request.data, partial=True)  # partial - частичное обновление
+        serializer = self.serializer_class(ad, data=request.data, partial=True)
 
         if serializer.is_valid():
             serializer.save()
