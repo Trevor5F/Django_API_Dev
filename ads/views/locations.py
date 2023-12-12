@@ -4,6 +4,6 @@ from ads.models import Location
 from ads.serializers.location import LocationSerializer
 
 
-class LocationViewSet(ModelViewSet):  # ModelViewSet - уже есть все методы CRUD
+class LocationViewSet(ModelViewSet):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
