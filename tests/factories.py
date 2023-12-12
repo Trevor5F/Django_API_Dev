@@ -2,8 +2,6 @@ import factory
 
 from ads.models import Category, User, Ad
 
-# factory.Faker - потому что поле должно быть уникальным
-
 
 class CategoryFactory(factory.django.DjangoModelFactory):
     class Meta:
