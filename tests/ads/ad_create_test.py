@@ -1,7 +1,7 @@
 import pytest
 
 @pytest.mark.django_db
-def test_ad_create(client, user, category):  # user и category это фабрики
+def test_ad_create(client, user, category):
     data = {
         "name": "Продам что-то",
         "author_id": user.pk,
