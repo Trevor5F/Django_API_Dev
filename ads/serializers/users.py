@@ -11,9 +11,9 @@ class UserListSerializer(serializers.ModelSerializer):
 
 class UserDetailSerializer(serializers.ModelSerializer):
     location = serializers.SlugRelatedField(
-        read_only=True,  # только для чтения
+        read_only=True,
         many=True,
-        slug_field="name"  # в поле location будут отображаться значения из поля "name"
+        slug_field="name"
     )
 
     class Meta:
@@ -23,7 +23,7 @@ class UserDetailSerializer(serializers.ModelSerializer):
 
 class UserCreateSerializer(serializers.ModelSerializer):
     location = serializers.SlugRelatedField(
-        required=False,  # поле не является обязательным
+        required=False,
         many=True,
         queryset=Location.objects.all(),
         slug_field="name"
